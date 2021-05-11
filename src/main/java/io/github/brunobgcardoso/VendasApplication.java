@@ -29,10 +29,14 @@ public class VendasApplication {
     public CommandLineRunner init(@Autowired ClientesRepository repository){
         return args -> {
             repository.save(new Cliente("Bruno",0));
-            repository.save(new Cliente("Cliente 2",  0));
+            repository.save(new Cliente("BrCliente 2",  0));
 
-            List<Cliente> all = repository.getAll();
+            List<Cliente> all = repository.findAll();
             all.forEach(System.out::println);
+
+
+            List<Cliente> all2 = repository.findByNomeLike("Bru");
+            all2.forEach(System.out::println);
         };
     }
 
